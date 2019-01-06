@@ -1,3 +1,4 @@
+import {User} from '../modelo/user';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  invalid = false;
+  user: User = new User();
 
   constructor() { }
 
   ngOnInit() {
+  }
+  
+  clickLogin(){
+    
   }
 
 }

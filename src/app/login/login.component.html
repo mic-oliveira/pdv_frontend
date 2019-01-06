@@ -1,3 +1,28 @@
-<p>
-  login works!
-</p>
+<div class="login-wrapper">
+  <form class="login" ngForm="login" #login="ngForm" clrForm>
+    <section class="title">
+      <h3 class="welcome">Sistema Marmotal</h3>
+      Dominus Dashboard
+      <!--<h5 class="hint">Use your Company ID to sign in or create one now</h5>-->
+    </section>
+    <div class="login-group">
+      <!--<clr-select-container>
+        <select clrSelect name="type">
+          <option value="local">Local Users</option>
+          <option value="admin">Administrator</option>
+        </select>
+      </clr-select-container>-->
+      <clr-input-container>
+        <input type="text" name="email" id="email" [(ngModel)]="user.email" #email="ngModel" email required clrInput placeholder="Email"/>
+      </clr-input-container>
+      <clr-password-container>
+        <input class="clr" type="password" name="password" [(ngModel)]="user.password" #password="ngModel" required  placeholder="Senha"/>
+      </clr-password-container>
+      <div class="error active" *ngIf="invalid">
+        Usuário ou senha inválido!
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="clickLogin()">NEXT</button>
+      <a href="javascript://" class="signup">Sign up for a Company ID</a>
+    </div>
+  </form>
+</div>
