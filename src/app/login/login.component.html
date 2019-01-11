@@ -4,16 +4,16 @@
       <h3 class="welcome">Sistema Marmotal</h3>
       Dominus Dashboard
     </section>
-    <div class="login-group">
-      <div class="clr-control-container" [ngClass]="{'clr-error' : email.invalid}">
+    <div class="login-group clr-justify-content-center">
+      <div class="clr-control-container" [ngClass]="{'clr-error' : email.invalid && email.dirty}">
         <div class="clr-input-wrapper" >
-          <input type="text" name="email" class="clr-col-12 clr-input" id="email" [(ngModel)]="user.email" #email="ngModel" email required placeholder="Email"/>
+          <input type="text" name="email" class="clr-col-10 clr-input" id="email" [(ngModel)]="user.email" #email="ngModel" email required placeholder="Email"/>
           <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
         </div>
       </div>
-      <div class="clr-control-container" [ngClass]="{'clr-error' : password.invalid}">
+      <div class="clr-control-container" [ngClass]="{'clr-error' : password.invalid && password.dirty}">
         <div class="clr-input-wrapper" >
-          <input type="password" name="password" class="clr-col-12 clr-input password" id="password" [(ngModel)]="user.email" #password="ngModel" required placeholder="Senha"/>
+          <input type="password" name="password" class="clr-col-10 clr-input password" id="password" [(ngModel)]="user.password" #password="ngModel" required placeholder="Senha"/>
         </div>
       </div>
       <button type="submit" class="btn btn-primary" (click)="clickLogin()">NEXT</button>
