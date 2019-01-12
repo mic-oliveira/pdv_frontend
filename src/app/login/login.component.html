@@ -5,19 +5,24 @@
       Dominus Dashboard
     </section>
     <div class="login-group clr-justify-content-center">
-      <div class="clr-control-container" [ngClass]="{'clr-error' : email.invalid && email.dirty}">
+      <div class="clr-control-container mb-1" [ngClass]="{'clr-error' : email.invalid && email.dirty}">
         <div class="clr-input-wrapper" >
-          <input type="text" name="email" class="clr-col-10 clr-input" id="email" [(ngModel)]="user.email" #email="ngModel" email required placeholder="Email"/>
+          <input type="text" name="email" class="clr-col-11 clr-input" id="email" autocomplete="off" [(ngModel)]="user.email" #email="ngModel" email required placeholder="Email"/>
           <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
         </div>
+        <clr-control-error *ngIf="email.invalid && email.dirty">Email inválido</clr-control-error>
       </div>
-      <div class="clr-control-container" [ngClass]="{'clr-error' : password.invalid && password.dirty}">
+      <div class="clr-control-container mb-1" [ngClass]="{'clr-error' : password.invalid && password.dirty}">
         <div class="clr-input-wrapper" >
-          <input type="password" name="password" class="clr-col-10 clr-input password" id="password" [(ngModel)]="user.password" #password="ngModel" required placeholder="Senha"/>
+          <input type="password" name="password" class="clr-col-11 clr-input password" id="password" [(ngModel)]="user.password" #password="ngModel" required placeholder="Senha"/>
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
         </div>
+        <clr-control-error *ngIf="password.invalid && password.dirty">Senha deve ser preenchida</clr-control-error>
       </div>
-      <button type="submit" class="btn btn-primary" (click)="clickLogin()">NEXT</button>
-      <a href="javascript://" class="signup">Sign up for a Company ID</a>
+      <div class="error" [ngClass]="{'active' : invalid }">
+        Email ou senha incorreto.
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="clickLogin()">Entrar</button>
     </div>
   </form>
 </div>
