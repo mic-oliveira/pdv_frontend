@@ -8,8 +8,8 @@
     </div>
     <div class="header-nav" [clr-nav-level]="1">
       <a href="javascript://" class="nav-link nav-text" routerLink="">Dashboard</a>
-      <a href="javascript://" class="nav-link nav-text">Categorias</a>
-      <a href="javascript://" class="nav-link nav-text" routerLink="produtos" routerLinkActive="active">Produtos</a>
+      <a href="javascript://" class="nav-link nav-text" routerLink="categorias" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Categorias</a>
+      <a href="javascript://" class="nav-link nav-text" routerLink="produtos" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Produtos</a>
       <a href="javascript://" class="nav-link nav-text">Sub-Categorias</a>
       <a href="javascript://" class="nav-link nav-text">Relatórios</a>
     </div>
