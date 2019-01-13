@@ -1,0 +1,33 @@
+<div class="clr-row clr-justify-content-center mb-3">
+  <h2>Produtos</h2>
+</div>
+<div class="clr-row clr-col-12 clr-align-items-baseline">
+  <input type="text" class="clr-col-9" placeholder="Pesquisa">
+  <button class="btn btn-primary clr-col-12 clr-col-md-1 ml-1 ml-md-1" (click)="clickPesquisar()"><clr-icon shape="search"></clr-icon> Pesquisar</button>
+  <button class="btn btn-success clr-col-12 clr-col-md-1 ml-1 ml-md-1" (click)="clickAdicionar()"><clr-icon shape="plus"></clr-icon> Adicionar</button>
+</div>
+<clr-datagrid [clrDgLoading]="load" ngClass="overflow: hidden">
+  <clr-dg-column [clrDgSortBy]="'id'" [clrDgSortOrder]="ordenacao">ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'descricao'">Descricao</clr-dg-column>
+  <clr-dg-column>Preço</clr-dg-column>
+  <clr-dg-column>Estoque</clr-dg-column>
+  <clr-dg-column>Ações</clr-dg-column>
+  <clr-dg-row *clrDgItems="let produto of produtos">
+    <clr-dg-cell>{{ produto.id }}</clr-dg-cell>
+    <clr-dg-cell>{{ produto.descricao }}</clr-dg-cell>
+    <clr-dg-cell>{{ produto.preco | currency: 'BRL' }}</clr-dg-cell>
+    <clr-dg-cell>{{ produto.estoque }}</clr-dg-cell>
+    <clr-dg-cell>
+      <button class="btn btn-primary" (click)="clickEditar(produto)"><clr-icon shape="edit" size="16"></clr-icon> Editar</button>
+      <button class="btn btn-danger" (click)="clickDeletar(produto)"><clr-icon shape="trash" size="16"></clr-icon> Excluir</button>
+    </clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [(clrDgPageSize)]="page">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Produtos por página</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      de {{pagination.totalItems}} produtos
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+<app-adicionar-produto (output)="getProdutos()"></app-adicionar-produto>

@@ -9,11 +9,21 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxMaskModule} from 'ngx-mask';
+import { MenuSuperiorComponent } from './menu-superior/menu-superior.component';
+import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
+import { PrincipalComponent } from './principal/principal.component';
+import { ProdutoComponent } from './produto/produto.component';
+import { CategoriaComponent } from './categoria/categoria.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    MenuSuperiorComponent,
+    MenuLateralComponent,
+    PrincipalComponent,
+    ProdutoComponent,
+    CategoriaComponent,
   ],
   imports: [
     BrowserModule,

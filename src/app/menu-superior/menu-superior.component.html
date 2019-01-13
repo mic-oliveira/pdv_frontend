@@ -1,0 +1,79 @@
+<clr-main-container>
+  <app-alert-level></app-alert-level>
+  <clr-header class="header header-6">
+    <div class="branding">
+      <a class="logo-and-title" href="/dashboard">
+        <span class="title">Dominus</span>
+      </a>
+    </div>
+    <div class="header-nav" [clr-nav-level]="1">
+      <a href="javascript://" class="nav-link nav-text" routerLink="">Dashboard</a>
+      <a href="javascript://" class="nav-link nav-text">Categorias</a>
+      <a href="javascript://" class="nav-link nav-text" routerLink="produtos" routerLinkActive="active">Produtos</a>
+      <a href="javascript://" class="nav-link nav-text">Sub-Categorias</a>
+      <a href="javascript://" class="nav-link nav-text">Relatórios</a>
+    </div>
+    <div class="header-actions">
+      <!-- NOTIFICAÇÕES -->
+      <clr-dropdown [clrCloseMenuOnItemClick]="false">
+        <button type="button" style="padding-left: 5px;" clrDropdownTrigger>
+          <clr-icon shape="envelope" size="35"></clr-icon>
+          <span class="badge badge-light-blue" style="margin-left: 10px">12</span>
+        </button>
+        <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+          <label class="dropdown-header">Notificações</label>
+          <button type="button" clrDropdownItem>
+            <clr-icon shape="flag"></clr-icon>
+            NOVO ANUNCIO
+          </button>
+          <button type="button" clrDropdownItem>
+            <clr-icon shape="logout"></clr-icon>
+            Logout
+          </button>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+      <!-- FIM NOTIFICAÇÕES -->
+      <!-- CONFIGURAÇÕES -->
+      <clr-dropdown [clrCloseMenuOnItemClick]="false">
+        <button type="button" clrDropdownTrigger>
+          <span class="nav-text d-none d-sm-inline">Michael de Oliveira Ferreira</span>
+          <img class="rounded-circle" src="https://pbs.twimg.com/profile_images/663851249528360960/UOLjq9uP.jpg" style="height: 50px">
+        </button>
+        <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+          <label class="dropdown-header">Configurações</label>
+          <button type="button" clrDropdownItem>
+            <clr-icon shape="user"></clr-icon>
+            Conta
+          </button>
+          <button type="button" (click)="logout()" clrDropdownItem>
+            <clr-icon shape="logout"></clr-icon>
+            Logout
+          </button>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+      <!-- FIM CONFIGURAÇÕES -->
+    </div>
+  </clr-header>
+  <nav class="sub-nav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Sub-menu Qualquer 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sub-menu Qualquer 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sub-menu Qualquer 3</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sub-menu Qualquer 4</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="content-container">
+    <app-menu-lateral ngClass="bg-white" *ngIf="false"></app-menu-lateral>
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</clr-main-container>
