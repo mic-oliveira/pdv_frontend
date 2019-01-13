@@ -1,4 +1,8 @@
 .login-wrapper{
+<<<<<<< HEAD
+    /*background-image: url('assets/images/marmota-bg.jpg');*/
+=======
     background-image: url('/assets/images/marmota-bg.jpg');
+>>>>>>> 0c128e9e0f6a2d5be82b7468dfb14902a9264784
     background-size: cover;
 }
