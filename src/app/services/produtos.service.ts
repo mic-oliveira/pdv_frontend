@@ -11,20 +11,20 @@ import {Observable} from 'rxjs';
 export class ProdutosService extends ConcretService {
   produtos: Produto[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(http: HttpClient) {
     super(http);
-    super.url = 'produtos';
+    this.url = 'produtos';
   }
 
-  public get() {
-    return super.get();
+  public getProdutos() {
+    return this.get();
   }
 
-  public delete(object: Object) {
-    return super.delete(object);
+  public deletarProduto(object: Object) {
+    return this.delete(object);
   }
 
-  public save(object: Object): Observable<any> {
-    return super.save(object);
+  public salvar(object: Object) {
+    return this.save(object);
   }
 }

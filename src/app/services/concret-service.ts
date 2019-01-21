@@ -1,40 +1,41 @@
-import {AbstractService} from './abstract-service';
-import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {AppConfig} from '../app-config';
+import {AbstractService} from './abstract-service';
 
-@Injectable()
-export class ConcretService implements AbstractService {
+@Injectable({
+  providedIn: 'root'
+})
+export class ConcretService extends AbstractService {
   private _url: string;
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    super();
+  }
 
   get url(): string {
     return this._url;
   }
 
   set url(value: string) {
-    this._url = AppConfig.url + value;
+    this._url =  this.getHost() + value;
   }
 
-  protected add(object: any): Observable<any> {
+  add(object: any) {
     return this.http.post(this.url, object);
   }
 
-  protected delete(object: any): Observable<any> {
+  delete(object: any) {
     return this.http.delete(this.url + object.id);
   }
 
-  protected edit(object: any): Observable<any> {
-    return this.http.patch(this.url + '/' + object.id, object);
+  edit(object: any) {
+    this.http.patch(this.url + '/' + object.id, object);
   }
 
-  protected get() {
+  get() {
     return this.http.get(this.url);
   }
 
-  protected save(object: any): Observable<any> {
+  save(object: any) {
     if (object.id.isEmpty) {
       return this.add(object);
     }

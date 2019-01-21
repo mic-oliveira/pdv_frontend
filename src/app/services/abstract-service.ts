@@ -1,26 +1,36 @@
 import {Crud} from '../interfaces/crud';
 import {Injectable} from '@angular/core';
 import {throwError} from 'rxjs';
+import {AppConfig} from '../app-config';
 
 @Injectable()
-export class AbstractService implements Crud {
-  protected add(object: any) {
+export abstract class AbstractService implements Crud {
+  // private host = AppConfig.url;
+
+  constructor() {
+  }
+
+  public add(object: any): any {
     return throwError(new Error('Metódo não implementado'));
   }
 
-  protected delete(object: any) {
+  public delete(object: any): any {
     return throwError(new Error('Metódo não implementado'));
   }
 
-  protected edit(object: any) {
+  public edit(object: any): any {
     return throwError(new Error('Metódo não implementado'));
   }
 
-  protected get() {
+  public get(): any {
     return throwError(new Error('Metódo não implementado'));
   }
 
-  protected save(object: any) {
+  public save(object: any): any {
     return throwError(new Error('Metódo não implementado'));
+  }
+
+  getHost() {
+    return AppConfig.url;
   }
 }
