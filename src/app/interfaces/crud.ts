@@ -1,3 +1,9 @@
+import {Observable} from 'rxjs';
+
 export interface Crud {
-    get(object: Object);
+  get();
+  save(object: any);
+  add(object: any);
+  edit(object: any);
+  delete(object: any);
 }

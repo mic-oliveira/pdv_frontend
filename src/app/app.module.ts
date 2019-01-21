@@ -14,6 +14,11 @@ import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
+import {registerLocaleData} from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
+import { AlertAppComponent } from './alert-app/alert-app.component';
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -24,6 +29,8 @@ import { CategoriaComponent } from './categoria/categoria.component';
     PrincipalComponent,
     ProdutoComponent,
     CategoriaComponent,
+    AdicionarProdutoComponent,
+    AlertAppComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,9 @@ import { CategoriaComponent } from './categoria/categoria.component';
     HttpClientModule,
     NgxMaskModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'pt' }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
