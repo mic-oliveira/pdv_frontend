@@ -19,7 +19,6 @@ export class AdicionarProdutoComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   clickAdicionar(produto: Produto) {

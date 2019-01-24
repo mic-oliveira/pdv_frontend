@@ -9,7 +9,7 @@
             <input type="text" autocomplete="off" name="descricao" id="descricao" [(ngModel)]="produto.descricao" #descricao="ngModel" placeholder="Descrição" required class="clr-input col-12">
             <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
           </div>
-          <span class="clr-subtext text-danger" *ngIf="descricao.invalid && descricao.dirty">Error message</span>
+          <span class="clr-subtext text-danger" *ngIf="descricao.invalid && descricao.dirty">Descricao obrigatória</span>
         </div>
       </div>
       <div class="clr-form-control">
@@ -19,7 +19,7 @@
             <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left', allowNegative: false }" autocomplete="off" name="preco" id="preco" [(ngModel)]="produto.preco" keyboardType="number" #preco="ngModel" placeholder="Preço" required class="clr-input col-12" style="direction: rtl">
             <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
           </div>
-          <span class="clr-subtext text-danger" *ngIf="preco.invalid && preco.dirty">Error message</span>
+          <span class="clr-subtext text-danger" *ngIf="preco.invalid && preco.dirty">Preço obrigatório</span>
         </div>
       </div>
       <div class="clr-form-control">
@@ -29,7 +29,7 @@
             <input type="number" autocomplete="off" name="estoque" id="estoque" [(ngModel)]="produto.estoque" #estoque="ngModel" placeholder="Estoque" required class="clr-input col-12">
             <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
           </div>
-          <span class="clr-subtext text-danger" *ngIf="estoque.invalid && estoque.dirty">Error message</span>
+          <span class="clr-subtext text-danger" *ngIf="estoque.invalid && estoque.dirty">Estoque obrigatório</span>
         </div>
       </div>
     </form>
