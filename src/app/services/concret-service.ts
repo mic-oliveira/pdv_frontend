@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AbstractService} from './abstract-service';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,16 +20,16 @@ export class ConcretService extends AbstractService {
     this._url =  this.getHost() + value;
   }
 
-  add(object: any) {
+  add(object: any): Observable<any> {
     return this.http.post(this.url, object);
   }
 
   delete(object: any) {
-    return this.http.delete(this.url + object.id);
+    return this.http.delete(this.url + '/' + object.id);
   }
 
-  edit(object: any) {
-    this.http.patch(this.url + '/' + object.id, object);
+  edit(object: any): Observable<any> {
+    return this.http.patch(this.url + '/' + object.id, object);
   }
 
   get() {

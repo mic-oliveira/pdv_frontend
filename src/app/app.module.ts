@@ -18,6 +18,7 @@ import {registerLocaleData} from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
 import { AlertAppComponent } from './alert-app/alert-app.component';
+import {NgxCurrencyModule} from 'ngx-currency';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -40,7 +41,8 @@ registerLocaleData(ptBr);
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgxCurrencyModule,
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt' }
