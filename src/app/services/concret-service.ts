@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AbstractService} from './abstract-service';
 import {Observable} from 'rxjs';
+import {isUndefined} from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class ConcretService extends AbstractService {
   }
 
   save(object: any) {
-    if (object.id.isEmpty) {
+    if (isUndefined(object.id)) {
       return this.add(object);
     }
     return this.edit(object);
