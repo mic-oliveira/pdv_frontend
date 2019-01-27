@@ -16,7 +16,7 @@
     <clr-dg-cell>{{ produto.id }}</clr-dg-cell>
     <clr-dg-cell>{{ produto.descricao }}</clr-dg-cell>
     <clr-dg-cell>{{ produto.preco | currency: 'BRL' }}</clr-dg-cell>
-    <clr-dg-cell>{{ produto.estoque }}</clr-dg-cell>
+    <clr-dg-cell>{{ produto.estoque | number: '1.0-0' }}</clr-dg-cell>
     <clr-dg-cell>
       <button class="btn btn-primary" (click)="editarProduto(produto)"><clr-icon shape="edit" size="16"></clr-icon> Editar</button>
       <button class="btn btn-danger" (click)="deletarProduto(produto)"><clr-icon shape="trash" size="16"></clr-icon> Excluir</button>

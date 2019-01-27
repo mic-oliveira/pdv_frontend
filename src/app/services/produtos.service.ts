@@ -15,16 +15,4 @@ export class ProdutosService extends ConcretService {
     super(http);
     this.url = 'produtos';
   }
-
-  public getProdutos(): Observable<any> {
-    return this.get();
-  }
-
-  public deletarProduto(object: Produto): Observable<any> {
-    return this.delete(object);
-  }
-
-  public salvar(object: Produto): Observable<Produto[]> {
-    return this.save(object);
-  }
 }

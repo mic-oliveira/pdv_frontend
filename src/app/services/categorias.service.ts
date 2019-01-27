@@ -8,4 +8,8 @@ import {Observable} from 'rxjs';
 })
 export class CategoriasService extends ConcretService {
 
+  constructor(http: HttpClient) {
+    super(http);
+    this.url = 'categorias';
+  }
 }

@@ -27,13 +27,13 @@ export class ProdutoComponent implements OnInit {
   }
 
   getProdutos() {
-    this.produtoService.getProdutos().subscribe( (x: any) => {
+    this.produtoService.get().subscribe( (x: any) => {
       this.produtos = x.data;
     });
   }
 
   deletarProduto(produto: Produto) {
-    this.produtoService.deletarProduto(produto).toPromise().then();
+    this.produtoService.delete(produto).toPromise().then();
   }
 
   editarProduto(produto: Produto) {
