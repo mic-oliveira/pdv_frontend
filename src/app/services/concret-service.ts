@@ -9,7 +9,7 @@ import {isUndefined} from 'util';
 })
 export class ConcretService extends AbstractService {
   private _url: string;
-  constructor(private http: HttpClient) {
+  constructor(protected http: HttpClient) {
     super();
   }
 

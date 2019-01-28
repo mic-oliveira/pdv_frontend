@@ -1,4 +1,4 @@
-<clr-modal [(clrModalOpen)]="modal" [clrModalClosable]="false">
+<clr-modal [clrModalSize]="'lg'" [(clrModalOpen)]="modal" [clrModalClosable]="false">
   <h3 class="modal-title col-12 text-center">Produto</h3>
   <div class="modal-body">
     <form class="clr-form col-12" name="form" #form="ngForm">
@@ -23,13 +23,27 @@
         </div>
       </div>
       <div class="clr-form-control">
-        <label for="descricao" class="clr-control-label col-10">Estoque</label>
+        <label for="estoque" class="clr-control-label col-10">Estoque</label>
         <div class="clr-control-container col-12" [ngClass]="{'clr-error': estoque.invalid && estoque.dirty}">
           <div class="clr-input-wrapper">
             <input type="number" autocomplete="off" name="estoque" id="estoque" [(ngModel)]="produto.estoque" #estoque="ngModel" placeholder="Estoque" required class="clr-input col-12">
             <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
           </div>
           <span class="clr-subtext text-danger" *ngIf="estoque.invalid && estoque.dirty">Estoque obrigatório</span>
+        </div>
+      </div>
+      <div class="clr-form-control">
+        <label class="clr-control-label clr-col-4">Categoria</label>
+        <div class="clr-control-container row container ml-1 col-10 align-items-baseline">
+          <select clrSelect name="selectCategorias" [(ngModel)]="categoria">
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria">
+              {{categoria.descricao}}
+            </option>
+          </select>
+          <div class="btn btn-lg btn-primary ml-1" (click)="adicionaCategoria()" ><clr-icon shape="plus"></clr-icon></div>
+        </div>
+        <div class="container">
+          <span class="badge badge-warning" *ngFor="let categoria of produto.categorias" (click)="removerCategoria(produto,categoria)">{{categoria.descricao}}</span>
         </div>
       </div>
     </form>

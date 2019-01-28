@@ -1,8 +1,15 @@
+import {Categoria} from './categoria';
+import {Injectable} from '@angular/core';
+import {throwError} from 'rxjs';
+
+@Injectable()
 export class Produto {
   private _id: number;
   private _descricao: string;
   private _preco: number;
   private _estoque: number;
+  private _categorias: Categoria[] = [];
+
   get id(): number {
     return this._id;
   }
@@ -33,5 +40,26 @@ export class Produto {
 
   set estoque(value: number) {
     this._estoque = value;
+  }
+
+  get categorias(): Categoria[] {
+    return this._categorias;
+  }
+
+  set categorias(value: Categoria[]) {
+    this._categorias = value;
+  }
+
+  public addCategoria(categoria: Categoria) {
+    this.categorias.push(categoria);
+  }
+
+  public verificaCategorias(id) {
+    this._categorias.find((x: Categoria) => {
+      if (x.id === id) {
+        return true;
+      }
+      return false;
+    });
   }
 }
