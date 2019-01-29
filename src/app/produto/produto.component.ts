@@ -38,10 +38,12 @@ export class ProdutoComponent implements OnInit {
 
   editarProduto(produto: Produto) {
     this.child.produto = produto;
+    this.child.visivel = false;
     this.child.modal = true;
   }
   clickAdicionar() {
     this.child.produto = new Produto();
+    this.child.visivel = false;
     this.child.modal = true;
   }
 }
