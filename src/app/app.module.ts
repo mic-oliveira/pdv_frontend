@@ -19,6 +19,8 @@ import ptBr from '@angular/common/locales/pt';
 import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
 import { AlertAppComponent } from './alert-app/alert-app.component';
 import {NgxCurrencyModule} from 'ngx-currency';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -43,6 +45,7 @@ registerLocaleData(ptBr);
     HttpClientModule,
     NgxMaskModule.forRoot(),
     NgxCurrencyModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt' }
