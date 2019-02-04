@@ -16,7 +16,7 @@ import { ProdutoComponent } from './produto/produto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import {registerLocaleData} from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
-import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
+import { AdicionarProdutoComponent } from './produto/adicionar-produto/adicionar-produto.component';
 import { AlertAppComponent } from './alert-app/alert-app.component';
 import {NgxCurrencyModule} from 'ngx-currency';
 import { ServiceWorkerModule } from '@angular/service-worker';

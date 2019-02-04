@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {Produto} from '../modelo/produto';
-import {ProdutosService} from '../services/produtos.service';
+import {Produto} from '../../modelo/produto';
+import {ProdutosService} from '../../services/produtos.service';
 import {NgForm} from '@angular/forms';
-import {ConcretService} from '../services/concret-service';
-import {Categoria} from '../modelo/categoria';
-import {CategoriasService} from '../services/categorias.service';
+import {ConcretService} from '../../services/concret-service';
+import {Categoria} from '../../modelo/categoria';
+import {CategoriasService} from '../../services/categorias.service';
 import {error, isUndefined} from 'util';
 
 @Component({
@@ -20,6 +20,7 @@ export class AdicionarProdutoComponent implements OnInit {
   categorias: Categoria[];
   categoria: Categoria;
   visivel: boolean;
+  imagePreview = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzfNzdcbzyOd6xzsIpkpwqaS3ZKiHldyqoievdmb7vQ5MFQ6WS';
   constructor(private produtoService: ProdutosService, private categoriaService: CategoriasService) {
     this.produto = new Produto();
     this.categorias = [];
@@ -32,6 +33,7 @@ export class AdicionarProdutoComponent implements OnInit {
   }
 
   clickAdicionar(produto: Produto) {
+    console.log(this.produto.imagem);
     this.produtoService.save(produto).toPromise().then(x => {
       this.output.emit();
       this.modal = false;
@@ -78,5 +80,18 @@ export class AdicionarProdutoComponent implements OnInit {
       .catch(erro => {
         this.visivel = true;
       });
+  }
+
+  upload(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.produto.imagem = event.target.result;
+      };
+      this.produto.imagem = event.target.files[0];
+    }
   }
 }

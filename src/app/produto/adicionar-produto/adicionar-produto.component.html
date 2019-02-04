@@ -1,0 +1,72 @@
+<clr-modal [clrModalSize]="'lg'" [(clrModalOpen)]="modal" [clrModalClosable]="false">
+  <h3 class="modal-title col-12 text-center">Produto</h3>
+  <div class="modal-body">
+    <form class="clr-form col-12" name="form" #form="ngForm">
+      <div class="clr-row clr-justify-content-center">
+        <div class="clr-col-4">
+          <img class="rounded" height="225" width="250" [src]="!(produto.imagem == null) ? 'http://192.168.0.100:8000/' + produto.imagem : 'http://192.168.0.100:8000/storage/sem-foto.jpg'">
+          <input type="file" class="display d-none" (change)="upload($event)" accept="image/*" #file>
+          <div class="clr-row clr-justify-content-center">
+            <button type="button" class="btn btn-primary" (click)="file.click()">
+              <clr-icon shape="camera" class="is-solid"></clr-icon>
+              <span class="ml-1">Adicionar foto</span>
+            </button>
+          </div>
+        </div>
+        <div class="clr-col-8">
+          <div class="clr-form-control">
+            <label for="descricao" class="clr-control-label col-10">Descrição</label>
+            <div class="clr-control-container col-12" [ngClass]="{'clr-error': descricao.invalid && descricao.dirty}">
+              <div class="clr-input-wrapper">
+                <input type="text" autocomplete="off" name="descricao" id="descricao" [(ngModel)]="produto.descricao" #descricao="ngModel" placeholder="Descrição" required class="clr-input col-12">
+                <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
+              </div>
+              <span class="clr-subtext text-danger" *ngIf="descricao.invalid && descricao.dirty">Descricao obrigatória</span>
+            </div>
+          </div>
+          <div class="clr-form-control">
+            <label for="descricao" class="clr-control-label col-10">Preço</label>
+            <div class="clr-control-container col-12" [ngClass]="{'clr-error': preco.invalid && preco.dirty}">
+              <div class="clr-input-wrapper">
+                <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left', allowNegative: false }" autocomplete="off" name="preco" id="preco" [(ngModel)]="produto.preco" keyboardType="number" #preco="ngModel" placeholder="Preço" required class="clr-input col-12" style="direction: rtl">
+                <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
+              </div>
+              <span class="clr-subtext text-danger" *ngIf="preco.invalid && preco.dirty">Preço obrigatório</span>
+            </div>
+          </div>
+          <div class="clr-form-control">
+            <label for="estoque" class="clr-control-label col-10">Estoque</label>
+            <div class="clr-control-container col-12" [ngClass]="{'clr-error': estoque.invalid && estoque.dirty}">
+              <div class="clr-input-wrapper">
+                <input type="text" autocomplete="off" name="estoque" id="estoque" keyboardType="number" [(ngModel)]="produto.estoque" #estoque="ngModel" placeholder="Estoque" required class="clr-input col-12">
+                <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
+              </div>
+              <span class="clr-subtext text-danger" *ngIf="estoque.invalid && estoque.dirty">Estoque obrigatório</span>
+            </div>
+          </div>
+          <div class="clr-form-control">
+            <label class="clr-control-label clr-col-4">Categoria</label>
+            <div class="clr-control-container row container ml-1 col-10 align-items-baseline">
+              <select clrSelect name="selectCategorias" [(ngModel)]="categoria">
+                <option *ngFor="let categoria of categorias" [ngValue]="categoria">
+                  {{categoria.descricao}}
+                </option>
+              </select>
+              <div class="btn btn-lg btn-primary ml-1" (click)="adicionaCategoria()" >
+                <clr-icon shape="plus"></clr-icon>
+              </div>
+              <span class="clr-subtext text-danger" *ngIf="visivel">{{ 'categoria já existente.' | titlecase }}</span>
+            </div>
+          </div>
+          <div class="container">
+            <span class="badge badge-warning" *ngFor="let categoria of produto.categorias" (click)="removerCategoria(categoria)">{{categoria.descricao}}</span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="clickCancelar()">Cancel</button>
+    <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="clickAdicionar(produto);">Ok</button>
+  </div>
+</clr-modal>

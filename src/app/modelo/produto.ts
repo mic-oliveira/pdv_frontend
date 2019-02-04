@@ -1,6 +1,7 @@
 import {Categoria} from './categoria';
 import {Injectable} from '@angular/core';
 import {throwError} from 'rxjs';
+import {AppConfig} from '../app-config';
 
 @Injectable()
 export class Produto {
@@ -9,6 +10,7 @@ export class Produto {
   private _preco: number;
   private _estoque: number;
   private _categorias: Categoria[] = [];
+  private _imagem: any;
 
   get id(): number {
     return this._id;
@@ -61,5 +63,13 @@ export class Produto {
       }
       return false;
     });
+  }
+
+  get imagem(): any {
+    return this._imagem;
+  }
+
+  set imagem(value: any) {
+    this._imagem = value;
   }
 }

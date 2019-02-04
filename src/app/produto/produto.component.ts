@@ -5,7 +5,7 @@ import {ProdutosService} from '../services/produtos.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ConcretService} from '../services/concret-service';
-import {AdicionarProdutoComponent} from '../adicionar-produto/adicionar-produto.component';
+import {AdicionarProdutoComponent} from './adicionar-produto/adicionar-produto.component';
 
 @Component({
   selector: 'app-produto',
