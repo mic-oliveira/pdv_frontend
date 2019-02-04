@@ -6,6 +6,7 @@ import {ConcretService} from '../../services/concret-service';
 import {Categoria} from '../../modelo/categoria';
 import {CategoriasService} from '../../services/categorias.service';
 import {error, isUndefined} from 'util';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-adicionar-produto',
@@ -21,7 +22,7 @@ export class AdicionarProdutoComponent implements OnInit {
   categoria: Categoria;
   visivel: boolean;
   imagePreview = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzfNzdcbzyOd6xzsIpkpwqaS3ZKiHldyqoievdmb7vQ5MFQ6WS';
-  constructor(private produtoService: ProdutosService, private categoriaService: CategoriasService) {
+  constructor(private produtoService: ProdutosService, private categoriaService: CategoriasService, public sanitizer: DomSanitizer) {
     this.produto = new Produto();
     this.categorias = [];
     this.categoria = new Categoria();
@@ -93,5 +94,9 @@ export class AdicionarProdutoComponent implements OnInit {
       };
       this.produto.imagem = event.target.files[0];
     }
+  }
+
+  imagemUrl() {
+    return this.sanitizer.bypassSecurityTrustUrl(this.produto.imagem);
   }
 }
