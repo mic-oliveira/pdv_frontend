@@ -21,7 +21,14 @@ import { AlertAppComponent } from './alert-app/alert-app.component';
 import {NgxCurrencyModule} from 'ngx-currency';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {JwtModule} from '@auth0/angular-jwt';
+import {TokenInterceptor} from './interceptors/token-interceptor';
 registerLocaleData(ptBr);
+
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -45,10 +52,17 @@ registerLocaleData(ptBr);
     HttpClientModule,
     NgxMaskModule.forRoot(),
     NgxCurrencyModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['http://192.168.0.100:8000/*'],
+      }
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'pt' }
+    {provide: LOCALE_ID, useValue: 'pt' },
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -33,9 +33,8 @@ export class AdicionarProdutoComponent implements OnInit {
     this.getCategorias();
   }
 
-  clickAdicionar(produto: Produto) {
-    console.log(this.produto.imagem);
-    this.produtoService.save(produto).toPromise().then(x => {
+  salvar() {
+    this.produtoService.save(this.produto).toPromise().then(x => {
       this.output.emit();
       this.modal = false;
     }).catch( erro => {
@@ -48,6 +47,9 @@ export class AdicionarProdutoComponent implements OnInit {
     });
   }
   clickCancelar() {
+    /*if (this.form.invalid) {
+      this.form.resetForm();
+    }*/
     this.output.emit();
     this.modal = false;
   }
@@ -83,16 +85,15 @@ export class AdicionarProdutoComponent implements OnInit {
       });
   }
 
-  upload(event: any) {
-    if (event.target.files && event.target.files[0]) {
+  upload(arquivo: any) {
+    if (arquivo.target.files && arquivo.target.files[0]) {
       const reader = new FileReader();
-
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.produto.imagem = event.target.result;
+      reader.readAsDataURL(arquivo.target.files[0]);
+      reader.onload = () => {
+        console.log(reader.result);
+        this.produto.imagem = reader.result;
       };
-      this.produto.imagem = event.target.files[0];
+      // this.produto.imagem = arquivo.target.files[0];
     }
   }
 

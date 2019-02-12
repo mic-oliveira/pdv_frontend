@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ConcretService} from '../services/concret-service';
 import {AdicionarProdutoComponent} from './adicionar-produto/adicionar-produto.component';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-produto',
@@ -35,7 +36,9 @@ export class ProdutoComponent implements OnInit {
   }
 
   deletarProduto(produto: Produto) {
-    this.produtoService.delete(produto).toPromise().then();
+    this.produtoService.delete(produto).toPromise().then( () => {
+      this.getProdutos();
+    });
   }
 
   editarProduto(produto: Produto) {
