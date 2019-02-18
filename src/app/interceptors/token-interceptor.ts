@@ -1,5 +1,6 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -12,7 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
         },
       });
     } catch (e) {
-      return e;
+      return (e);
     }
     return next.handle(request);
   }

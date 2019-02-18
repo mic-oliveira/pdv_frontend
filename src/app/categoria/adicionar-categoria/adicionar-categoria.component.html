@@ -1,0 +1,26 @@
+<form class="clr-form col-12" (ngSubmit)="salvar(form)" name="form" #form="ngForm">
+  <clr-modal [clrModalSize]="'md'" [(clrModalOpen)]="modal" [clrModalClosable]="false">
+    <h3 class="modal-title col-12 text-center">Produto</h3>
+    <div class="modal-body">
+      <div class="clr-row clr-justify-content-center">
+        <div class="clr-col-12"style="overflow: hidden">
+          <div class="clr-form-control">
+            <label for="descricao" class="clr-control-label col-12">Descrição</label>
+            <div class="clr-control-container col-12" [ngClass]="{'clr-error': descricao.invalid && descricao.dirty}">
+              <div class="clr-input-wrapper">
+                <input type="text" autocomplete="off" name="descricao" id="descricao" [(ngModel)]="categoria.descricao" #descricao="ngModel" placeholder="Descrição" required class="clr-input col-12">
+                <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
+              </div>
+              <span class="clr-subtext text-danger" *ngIf="descricao.invalid && descricao.dirty">Descricao obrigatória</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Ok</button>
+      <button type="button" class="btn btn-outline" (click)="cancelar()">Cancel</button>
+    </div>
+  </clr-modal>
+</form>

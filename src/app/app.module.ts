@@ -23,6 +23,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {JwtModule} from '@auth0/angular-jwt';
 import {TokenInterceptor} from './interceptors/token-interceptor';
+import { AdicionarCategoriaComponent } from './categoria/adicionar-categoria/adicionar-categoria.component';
 registerLocaleData(ptBr);
 
 
@@ -41,6 +42,7 @@ export function tokenGetter() {
     CategoriaComponent,
     AdicionarProdutoComponent,
     AlertAppComponent,
+    AdicionarCategoriaComponent,
   ],
   imports: [
     BrowserModule,

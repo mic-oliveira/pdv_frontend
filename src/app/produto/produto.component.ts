@@ -3,7 +3,7 @@ import {Produto} from '../modelo/produto';
 import {ClrDatagridSortOrder} from '@clr/angular';
 import {ProdutosService} from '../services/produtos.service';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {distinctUntilChanged, map} from 'rxjs/operators';
 import {ConcretService} from '../services/concret-service';
 import {AdicionarProdutoComponent} from './adicionar-produto/adicionar-produto.component';
 import {JwtHelperService} from '@auth0/angular-jwt';
@@ -28,10 +28,10 @@ export class ProdutoComponent implements OnInit {
   }
 
   getProdutos() {
-    this.produtoService.get().toPromise().then( (x: any) => {
+    this.load = true;
+    this.produtoService.get().pipe(distinctUntilChanged()).subscribe( (x: any) => {
       this.produtos = x.data as Produto[];
-    }).catch( x => {
-      return caches.match('/produtos');
+      this.load = false;
     });
   }
 

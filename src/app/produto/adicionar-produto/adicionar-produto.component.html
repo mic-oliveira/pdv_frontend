@@ -1,4 +1,4 @@
-<form class="clr-form col-12" (ngSubmit)="salvar()" name="form" #form="ngForm">
+<form class="clr-form col-12" (ngSubmit)="salvar(form)" name="form" #form="ngForm">
 <clr-modal [clrModalSize]="'lg'" [(clrModalOpen)]="modal" [clrModalClosable]="false">
   <h3 class="modal-title col-12 text-center">Produto</h3>
     <div class="modal-body">
@@ -25,7 +25,7 @@
               </div>
             </div>
             <div class="clr-form-control">
-              <label for="descricao" class="clr-control-label col-10">Preço</label>
+              <label for="preco" class="clr-control-label col-10">Preço</label>
               <div class="clr-control-container col-12" [ngClass]="{'clr-error': preco.invalid && preco.dirty}">
                 <div class="clr-input-wrapper">
                   <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left', allowNegative: false }" autocomplete="off" name="preco" id="preco" [(ngModel)]="produto.preco" keyboardType="number" #preco="ngModel" placeholder="Preço" required class="clr-input col-12" style="direction: rtl">
@@ -59,7 +59,7 @@
               </div>
             </div>
             <div class="container">
-              <span class="badge badge-warning" *ngFor="let categoria of produto.categorias" (click)="removerCategoria(categoria)">{{categoria.descricao}}</span>
+              <span class="badge badge-info" style="font-size: 15px; height: 25px;" *ngFor="let categoria of produto.categorias" (click)="removerCategoria(categoria)">{{categoria.descricao}}</span>
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Ok</button>
-      <button type="button" class="btn btn-outline" (click)="clickCancelar()">Cancel</button>
+      <button type="button" class="btn btn-outline" (click)="cancelar()">Cancel</button>
     </div>
 
 </clr-modal>

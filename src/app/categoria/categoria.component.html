@@ -1,5 +1,5 @@
 <div class="clr-row clr-justify-content-center mb-3">
-  <h2>Produtos</h2>
+  <h2>Categorias</h2>
 </div>
 <div class="clr-row clr-col-12 clr-align-items-baseline">
   <input type="text" class="clr-col-9" placeholder="Pesquisa">
@@ -9,14 +9,10 @@
 <clr-datagrid [clrDgLoading]="load" ngClass="overflow: hidden">
   <clr-dg-column [clrDgSortBy]="'id'" [clrDgSortOrder]="ordenacao">ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'descricao'">Descricao</clr-dg-column>
-  <clr-dg-column>Preço</clr-dg-column>
-  <clr-dg-column>Estoque</clr-dg-column>
   <clr-dg-column>Ações</clr-dg-column>
   <clr-dg-row *clrDgItems="let categoria of categorias">
     <clr-dg-cell>{{ categoria.id }}</clr-dg-cell>
     <clr-dg-cell>{{ categoria.descricao }}</clr-dg-cell>
-    <clr-dg-cell>{{ categoria.preco | currency: 'BRL' }}</clr-dg-cell>
-    <clr-dg-cell>{{ categoria.estoque }}</clr-dg-cell>
     <clr-dg-cell>
       <button class="btn btn-primary" (click)="clickEditar(categoria)"><clr-icon shape="edit" size="16"></clr-icon> Editar</button>
       <button class="btn btn-danger" (click)="clickDeletar(categoria)"><clr-icon shape="trash" size="16"></clr-icon> Excluir</button>
@@ -30,4 +26,4 @@
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>
-<app-adicionar-produto></app-adicionar-produto>
+<app-adicionar-categoria (output)="getCategorias()"></app-adicionar-categoria>

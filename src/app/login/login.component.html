@@ -20,7 +20,7 @@
         <clr-control-error *ngIf="password.invalid && password.dirty">Senha deve ser preenchida</clr-control-error>
       </div>
       <div class="error" [ngClass]="{'active' : invalid }">
-        Email ou senha incorreto.
+        {{mensagem}}
       </div>
       <button type="submit" class="btn btn-primary" (click)="clickLogin()">Entrar</button>
     </div>

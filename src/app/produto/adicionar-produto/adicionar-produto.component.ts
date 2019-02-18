@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Produto} from '../../modelo/produto';
 import {ProdutosService} from '../../services/produtos.service';
-import {NgForm} from '@angular/forms';
+import {FormControl, FormGroup, NgForm} from '@angular/forms';
 import {ConcretService} from '../../services/concret-service';
 import {Categoria} from '../../modelo/categoria';
 import {CategoriasService} from '../../services/categorias.service';
@@ -33,8 +33,15 @@ export class AdicionarProdutoComponent implements OnInit {
     this.getCategorias();
   }
 
-  salvar() {
+  salvar(produtoForm: NgForm) {
+    console.log();
     this.produtoService.save(this.produto).toPromise().then(x => {
+      // this.output.emit();
+      produtoForm.form.reset({
+        descricao: this.produto.descricao,
+        preco: this.produto.preco,
+        estoque: this.produto.estoque
+      });
       this.output.emit();
       this.modal = false;
     }).catch( erro => {
@@ -42,14 +49,11 @@ export class AdicionarProdutoComponent implements OnInit {
     });
   }
   getCategorias() {
-    this.categoriaService.get().toPromise().then((x: any) => {
+    this.categoriaService.get().subscribe((x: any) => {
       this.categorias = x.data as Categoria[];
     });
   }
-  clickCancelar() {
-    /*if (this.form.invalid) {
-      this.form.resetForm();
-    }*/
+  cancelar() {
     this.output.emit();
     this.modal = false;
   }
@@ -68,6 +72,7 @@ export class AdicionarProdutoComponent implements OnInit {
         this.visivel = false;
       })
       .catch(erro => {
+        console.log(erro);
         this.visivel = true;
       });
   }
