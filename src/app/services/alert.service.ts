@@ -7,7 +7,7 @@ import {AlertApp} from '../modelo/alert-app';
 })
 export class AlertService {
   private alertObj = new AlertApp();
-  private alerta = new BehaviorSubject(this.alertaApp);
+  private alerta = new BehaviorSubject(this.alertObj);
   alertaApp = this.alerta.asObservable();
   constructor() { }
 
