@@ -3,6 +3,8 @@ import {Categoria} from '../modelo/categoria';
 import {ClrDatagridSortOrder} from '@clr/angular';
 import {CategoriasService} from '../services/categorias.service';
 import {AdicionarCategoriaComponent} from './adicionar-categoria/adicionar-categoria.component';
+import {AlertApp} from '../modelo/alert-app';
+import {AlertService} from '../services/alert.service';
 
 @Component({
   selector: 'app-categoria',
@@ -15,7 +17,7 @@ export class CategoriaComponent implements OnInit {
   page = 5;
   ordenacao = ClrDatagridSortOrder.ASC;
   categorias: Categoria[];
-  constructor(private categoriaService: CategoriasService) { }
+  constructor(private categoriaService: CategoriasService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.getCategorias();
