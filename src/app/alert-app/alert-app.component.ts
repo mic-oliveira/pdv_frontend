@@ -16,7 +16,6 @@ export class AlertAppComponent implements OnInit {
     this.alertService.alertaApp.subscribe( (x: AlertApp) => {
       this.alert = x;
       this.show = x.visible;
-      console.log(x);
     });
   }
 }
