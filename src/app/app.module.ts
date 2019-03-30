@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
 import {JwtModule} from '@auth0/angular-jwt';
 import {TokenInterceptor} from './interceptors/token-interceptor';
 import { AdicionarCategoriaComponent } from './categoria/adicionar-categoria/adicionar-categoria.component';
+import { PrintConfigComponent } from './print-config/print-config.component';
 registerLocaleData(ptBr);
 
 
@@ -43,6 +44,7 @@ export function tokenGetter() {
     AdicionarProdutoComponent,
     AlertAppComponent,
     AdicionarCategoriaComponent,
+    PrintConfigComponent,
   ],
   imports: [
     BrowserModule,
