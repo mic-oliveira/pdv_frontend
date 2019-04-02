@@ -24,6 +24,8 @@ import { environment } from '../environments/environment';
 import {JwtModule} from '@auth0/angular-jwt';
 import {TokenInterceptor} from './interceptors/token-interceptor';
 import { AdicionarCategoriaComponent } from './categoria/adicionar-categoria/adicionar-categoria.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+
 registerLocaleData(ptBr);
 
 
@@ -43,6 +45,7 @@ export function tokenGetter() {
     AdicionarProdutoComponent,
     AlertAppComponent,
     AdicionarCategoriaComponent,
+    UsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['http://192.168.0.100:8000/*'],
+        whitelistedDomains: ['http://localhost:8000/*'],
       }
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

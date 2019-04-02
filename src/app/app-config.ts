@@ -1,3 +1,3 @@
 export class AppConfig {
-    public static url = 'http://192.168.0.100:8000/api/';
+    public static url = 'http://localhost:8000/api/';
 }

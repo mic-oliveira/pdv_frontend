@@ -1,0 +1,36 @@
+<div class="clr-row clr-justify-content-center mb-2">
+  <h2>Usuários</h2>
+</div>
+
+<div class="clr-row clr-justify-content-center">
+
+  <div class="clr-col-sm-6 clr-col-md-6">
+    <div class="card">
+      <div class="card-header">
+        Cadastro de Usuário
+      </div>
+      <div class="card-block">
+        <form clrForm>
+          <clr-input-container>
+            <label for="nome">Nome</label>
+            <input clrInput type="text" style="width: 100%" class="clr-col-12" [(ngModel)]="nome" name="nome" placeholder="Seu Nome" required />
+            <clr-control-error>Por favor insira seu nome</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <label for="email">E-mail</label>
+            <input clrInput type="text" style="width: 100%" class="clr-col-12" [(ngModel)]="email" name="email" placeholder="Seu e-mail" required />
+            <clr-control-error>Por favor insira seu e-mail</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <label for="empresa">Empresa</label>
+            <input clrInput type="text" style="width: 100%" class="clr-col-12" [(ngModel)]="empresa" name="empresa" placeholder="Nome da sua empresa" required />
+            <clr-control-error>Por favor insira o nome da sua empresa</clr-control-error>
+          </clr-input-container>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

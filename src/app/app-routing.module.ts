@@ -5,10 +5,12 @@ import {PrincipalComponent} from './principal/principal.component';
 import {ProdutoComponent} from './produto/produto.component';
 import {CategoriaComponent} from './categoria/categoria.component';
 import {LoginGuard} from './guards/login.guard';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'dashboard', component: PrincipalComponent, /*canActivate: [LoginGuard], canActivateChild: [LoginGuard],*/ children: [
+      {path: 'usuarios', component: UsuarioComponent},
       {path: 'produtos', component: ProdutoComponent},
       {path: 'categorias', component: CategoriaComponent},
     ]},
