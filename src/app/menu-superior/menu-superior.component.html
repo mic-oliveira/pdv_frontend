@@ -34,14 +34,14 @@
       </clr-dropdown>
       <!-- FIM NOTIFICAÇÕES -->
       <!-- CONFIGURAÇÕES -->
-      <clr-dropdown [clrCloseMenuOnItemClick]="false">
+      <clr-dropdown [clrCloseMenuOnItemClick]="true">
         <button type="button" clrDropdownTrigger>
           <span class="nav-text d-none d-sm-inline">{{ usuario.pessoable.nome }}</span>
           <img class="rounded-circle" src="https://pbs.twimg.com/profile_images/663851249528360960/UOLjq9uP.jpg" style="height: 50px">
         </button>
         <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
           <label class="dropdown-header">Configurações</label>
-          <button type="button" clrDropdownItem>
+          <button type="button" routerLink="config" (click)="showSubNav()" clrDropdownItem>
             <clr-icon shape="user"></clr-icon>
             Conta
           </button>
@@ -54,13 +54,13 @@
       <!-- FIM CONFIGURAÇÕES -->
     </div>
   </clr-header>
-  <nav class="sub-nav" *ngIf="false">
+  <nav class="sub-nav" *ngIf="false" name="subNav" #subNav>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Sub-menu Qualquer 1</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="config">Inf. Usuário</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Sub-menu Qualquer 2</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="config/impressora">Impressao</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Sub-menu Qualquer 3</a>

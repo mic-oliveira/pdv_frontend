@@ -1,0 +1,63 @@
+<form class="clr-form clr-col-12 clr-col-sm-12" name="form" #form="ngForm">
+  <div class="clr-row">
+    <div class="clr-col-sm-12">
+      <clr-select-container>
+        <label>Tipo</label>
+        <select clrSelect name="tipoImpressora" (change)="setPrinterId($event)">
+          <option>TIPO IMPRESSORA</option>
+          <option value="0">LOCAL</option>
+          <option value="1">TCP / IP</option>
+          <option value="2">SERIAL</option>
+        </select>
+      </clr-select-container>
+    </div>
+    <ng-container [ngSwitch]="selectPrinterIndex">
+      <!------------------------------------------------------------------------------------>
+      <!-- impressora local -->
+      <ng-container *ngSwitchCase="0" class="clr-col">
+        <div class="clr-col-sm-4">
+          <clr-select-container>
+            <label>Impressora</label>
+            <select clrSelect [(ngModel)]="printer.modelo" (change)="setModel($event)" name="selectPrint">
+              <option value="-1" selected="selected">SELECIONE UM IMPRESSORA</option>
+              <option *ngFor="let printer of printers; index as i" [value]="i">{{printer}}</option>
+            </select>
+          </clr-select-container>
+          <div class="clr-col-sm-4">
+            <button *ngIf="printer.modelo >-1" class="btn btn-primary" (click)="test()">Testar</button>
+          </div>
+        </div>
+
+      </ng-container>
+      <!------------------------------------------------------------------------------------>
+      <!-- impressora TCP / IP -->
+      <ng-container *ngSwitchCase="1">
+        <div class="clr-row clr-align-items-center">
+          <div class="clr-col-8">
+            <div class="clr-form-control">
+              <label for="descricao" class="clr-control-label clr-col-12">Descrição</label>
+              <div class="clr-control-container" [ngClass]="{'clr-error': ip.invalid && ip.dirty}">
+                <div class="clr-input-wrapper">
+                  <input type="text" autocomplete="off" name="descricao" id="descricao" [(ngModel)]="printer.ip" #ip="ngModel" placeholder="Ip" required class="clr-input col-12">
+                  <clr-icon class="clr-validate-icon" shape="exclamation-triangle"></clr-icon>
+                </div>
+                <span class="clr-subtext text-danger" *ngIf="ip.invalid && ip.dirty">Descricao obrigatória</span>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" >
+              <clr-icon shape="camera" class="is-solid"></clr-icon>
+              <span class="ml-1">Adicionar foto</span>
+            </button>
+          </div>
+        </div>
+        <clr-select-container>
+          <label>Impressora</label>
+          <select clrSelect>
+            <option>SELECIONE UM IMPRESSORA</option>
+            <option *ngFor="let printer of printers; index as i" [value]="i">{{printer}}</option>
+          </select>
+        </clr-select-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</form>

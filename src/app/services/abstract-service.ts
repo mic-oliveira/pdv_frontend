@@ -5,7 +5,7 @@ import {AppConfig} from '../app-config';
 
 @Injectable()
 export abstract class AbstractService implements Crud {
-  // private host = AppConfig.url;
+  private host = AppConfig.url;
 
   constructor() {
   }
