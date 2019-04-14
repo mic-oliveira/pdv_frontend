@@ -10,7 +10,7 @@ import {ConfiguracaoComponent} from './configuracao/configuracao.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'dashboard', component: PrincipalComponent, /*canActivate: [LoginGuard], canActivateChild: [LoginGuard],*/ children: [
+  {path: 'dashboard', component: PrincipalComponent, canActivate: [LoginGuard], canActivateChild: [LoginGuard], children: [
       {path: 'produtos', component: ProdutoComponent},
       {path: 'categorias', component: CategoriaComponent},
       {path: 'config', component: ConfiguracaoComponent, children: [
@@ -27,7 +27,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
     {
-    onSameUrlNavigation: 'reload',
+      onSameUrlNavigation: 'reload',
     }
   )],
   exports: [RouterModule]

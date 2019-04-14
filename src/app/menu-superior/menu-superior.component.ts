@@ -8,7 +8,7 @@ import {Renderer3} from '@angular/core/src/render3/interfaces/renderer';
   styleUrls: ['./menu-superior.component.css']
 })
 export class MenuSuperiorComponent implements OnInit {
-  usuario: string;
+  usuario: any;
   @ViewChild('subNav') subNav: ElementRef;
   constructor(private renderer: Renderer2) {
     const jwt = new JwtHelperService();
@@ -25,6 +25,10 @@ export class MenuSuperiorComponent implements OnInit {
       'visibility',
       'visible'
     );
+  }
+
+  logout() {
+    return false;
   }
 
 }

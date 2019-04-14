@@ -27,8 +27,8 @@
     {
       "name": "app-pdv",
       "urls": [
-        "http://192.168.0.100:8000/api/produtos",
-        "http://192.168.0.100:8000/api/categorias"
+        "https://www.dominusdev.com:8999/api/produtos",
+        "https://www.dominusdev.com:8999/api/categorias"
       ],
       "cacheConfig": {
         "maxSize": 10000,
