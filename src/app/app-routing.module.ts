@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {PrincipalComponent} from './principal/principal.component';
 import {ProdutoComponent} from './produto/produto.component';
@@ -28,6 +28,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes,
     {
       onSameUrlNavigation: 'reload',
+      preloadingStrategy: PreloadAllModules,
     }
   )],
   exports: [RouterModule]
